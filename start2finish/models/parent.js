@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 const parentSchema = new Schema({
   id: { type: String, required: true },
   login: { type: String, required: true },
-  children [
+  children: [
      {
      	userName: {type: String, required: true},
      	parentReward: {type: String},
