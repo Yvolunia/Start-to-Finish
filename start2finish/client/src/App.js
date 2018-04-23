@@ -1,8 +1,8 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Books from "./pages/Parent";
-import Detail from "./pages/Login";
-import NoMatch from "./pages/Child";
+import Parent from "./pages/Parent";
+import Login from "./pages/Login";
+import Child from "./pages/Child";
 import Nav from "./components/Nav";
 
 const App = () => (
