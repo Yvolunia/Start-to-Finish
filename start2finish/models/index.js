@@ -1,3 +1,3 @@
 module.exports = {
-  Parent: require("./parent")
+  parent: require("./parent")
 };

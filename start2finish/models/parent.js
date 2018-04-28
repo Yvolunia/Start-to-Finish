@@ -8,15 +8,15 @@ const parentSchema = new Schema({
      {
      	userName: {type: String, required: true},
      	parentReward: {type: String},
-     	goals: [
+     	missions: [
      	   {
-     	   	goalName: {type: String},
+     	   	missionName: {type: String},
      	   	days: {type: Number},
      	   	pointValue: {type: Number},
      	   }]
      }]
 });
 
-const Parent = mongoose.model("Parent", parentSchema);
+const Parent = mongoose.model("parent", parentSchema);
 
 module.exports = Parent;
