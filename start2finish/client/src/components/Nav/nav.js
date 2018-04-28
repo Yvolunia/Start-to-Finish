@@ -3,9 +3,10 @@ import { Link } from "react-router-dom";
 import "./nav.css";
 
 const nav = props => (
-  <nav className="navbar navbar-light" style="background-color: #e3f2fd;">
-  <Link className="navbar-brand" to="/"><img src="../src 1.01.51 AM/start2finishLOGO.png" width="102.5px"
-  	height="50px"></Link>
+  <nav className="navbar navbar-light" style={{backgroundColor: "#e3f2fd"}}>
+  <Link className="navbar-brand" to="/">
+  	<img src="../src 1.01.51 AM/start2finishLOGO.png" width="102.5px" height="50px"/>
+  	</Link>
   <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span className="navbar-toggler-icon"></span>
   </button>
@@ -17,16 +18,16 @@ const nav = props => (
       <li className={window.location.pathname === "/signup" ? "active" : ""}>
           <Link to="/signup">Sign Up</Link>
         </li>
-       <li className={window.location.pathname === "/parent" ? "active" : ""}>
+      <li className={window.location.pathname === "/parent" ? "active" : ""}>
           <Link to="/parent">Parent SetUp</Link>
         </li>
-        <li className={window.location.pathname === "/tracker" ? "active" : ""}>
+      <li className={window.location.pathname === "/tracker" ? "active" : ""}>
           <Link to="/tracker">Parent Tracker</Link>
-         </li>
-         <li className={window.location.pathname === "/child" ? "active" : ""}>
+        </li>
+      <li className={window.location.pathname === "/child" ? "active" : ""}>
           <Link to="/child">Kid Home</Link>
         </li>
-        <li className={window.location.pathname === "/profile" ? "active" : ""}>
+      <li className={window.location.pathname === "/profile" ? "active" : ""}>
           <Link to="/profile">Kid Profile</Link>
         </li>
     </ul>

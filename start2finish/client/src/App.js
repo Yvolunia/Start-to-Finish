@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Parent from "./pages/Parent";
 import Login from "./pages/Login";
 import Child from "./pages/Child";
+import Sign
 import Nav from "./components/Nav";
 
 const App = () => (
@@ -11,7 +12,6 @@ const App = () => (
       <Nav />
       <Switch>
         <Route exact path="/" component={Home} />
-        <Route exact path="/home" component={Home} />
         <Route exact path="/signup" component={Signup} />
         <Route exact path="/parent" component={Parent} />
         <Route exact path="/tracker" component={Tracker} />
