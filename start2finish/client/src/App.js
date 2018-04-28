@@ -1,9 +1,11 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Parent from "./pages/Parent";
+import Parent from "./pages/Parent Mission Set Up";
 import Login from "./pages/Login";
-import Child from "./pages/Child";
-import Sign
+import Child from "./pages/Kid Home";
+import Signup from "./pages/Sign Up";
+import Tracker from "./pages/Parent Tracker";
+import Home from "./pages/HomeScreen";
 import Nav from "./components/Nav";
 
 const App = () => (

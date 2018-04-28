@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./nav.css";
 
-const nav = props => (
+const Nav = props => (
   <nav className="navbar navbar-light" style={{backgroundColor: "#e3f2fd"}}>
   <Link className="navbar-brand" to="/">
   	<img src="../src 1.01.51 AM/start2finishLOGO.png" width="102.5px" height="50px"/>
@@ -38,5 +38,5 @@ const nav = props => (
 
 
 
-export default nav;
+export default Nav;
 
