@@ -3,33 +3,39 @@ import { Link } from "react-router-dom";
 import "./nav.css";
 
 const nav = props => (
-  <nav className="navbar navbar-default">
-    <div className="container-fluid">
-      <div className="navbar-header">
-        <Link className="navbar-brand" to="/">
-          Pupster
-        </Link>
-      </div>
-      <ul className="nav navbar-nav">
-        <li
-          className={
-            window.location.pathname === "/" || window.location.pathname === "/about"
-              ? "active"
-              : ""
-          }
-        >
-          <Link to="/">About</Link>
+  <nav className="navbar navbar-light" style="background-color: #e3f2fd;">
+  <Link className="navbar-brand" to="/"><img src="../src 1.01.51 AM/start2finishLOGO.png" width="102.5px"
+  	height="50px"></Link>
+  <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span className="navbar-toggler-icon"></span>
+  </button>
+  <div className="collapse navbar-collapse" id="navbarNav">
+    <ul className="navbar-nav">
+      <li className={window.location.pathname === "/home" ? "active" : ""}>
+          <Link to="/home">Home</Link>
         </li>
-        <li className={window.location.pathname === "/discover" ? "active" : ""}>
-          <Link to="/discover">Discover</Link>
+      <li className={window.location.pathname === "/signup" ? "active" : ""}>
+          <Link to="/signup">Sign Up</Link>
         </li>
-        <li className={window.location.pathname === "/search" ? "active" : ""}>
-          <Link to="/search">Search</Link>
+       <li className={window.location.pathname === "/parent" ? "active" : ""}>
+          <Link to="/parent">Parent SetUp</Link>
         </li>
-      </ul>
-    </div>
-  </nav>
+        <li className={window.location.pathname === "/tracker" ? "active" : ""}>
+          <Link to="/tracker">Parent Tracker</Link>
+         </li>
+         <li className={window.location.pathname === "/child" ? "active" : ""}>
+          <Link to="/child">Kid Home</Link>
+        </li>
+        <li className={window.location.pathname === "/profile" ? "active" : ""}>
+          <Link to="/profile">Kid Profile</Link>
+        </li>
+    </ul>
+  </div>
+</nav>
 );
+
+
+
 
 export default nav;
 
