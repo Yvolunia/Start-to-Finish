@@ -4,7 +4,7 @@ export default {
     getparents: function() {
       return axios.get("/api/parent");
     },
-    // Gets the book with the given id
+    
     getparents: function(id) {
       return axios.get("/api/parent/" + id);
     },
