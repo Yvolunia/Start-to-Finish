@@ -18,11 +18,11 @@ const Nav = props => (
       <li className={window.location.pathname === "/signup" ? "active" : ""}>
           <Link to="/signup">Sign Up</Link>
         </li>
-      <li className={window.location.pathname === "/parent" ? "active" : ""}>
-          <Link to="/parent">Parent SetUp</Link>
+      <li className={window.location.pathname === "/adult" ? "active" : ""}>
+          <Link to="/adult">Adult SetUp</Link>
         </li>
       <li className={window.location.pathname === "/tracker" ? "active" : ""}>
-          <Link to="/tracker">Parent Tracker</Link>
+          <Link to="/tracker">Adult Tracker</Link>
         </li>
       <li className={window.location.pathname === "/child" ? "active" : ""}>
           <Link to="/child">Kid Home</Link>

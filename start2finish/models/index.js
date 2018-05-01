@@ -1,3 +1,3 @@
 module.exports = {
-  parent: require("./parent")
+  adult: require("./adult")
 };
