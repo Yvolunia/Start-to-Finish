@@ -5,7 +5,7 @@ export default {
       return axios.get("/api/kids");
     },
     
-    getkids: (id) => {
+    getkids:(id) => {
       return axios.get("/api/kids/" + id);
     },
 
@@ -25,7 +25,7 @@ export default {
       return axios.get("/api/missions");
     },
     
-    getmissions: (id) => {
+    getmissions:(id) => {
       return axios.get("/api/missions/" + id);
     },
 
@@ -37,7 +37,7 @@ export default {
       return axios.delete("/api/misions/" + id);
     },
     
-    savekids: (missionData) => {
+    savemissions: (missionData) => {
       return axios.post("/api/book", missionData);
     }
 
