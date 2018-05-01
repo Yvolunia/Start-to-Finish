@@ -1,7 +1,7 @@
 const router = require("express").Router();
-const parentRoutes = require("./parent.js");
+const adultRoutes = require("./adult.js");
 
-// Book routes
-router.use("/parent", parentRoutes);
+// Routes
+router.use("/adult", adulttRoutes);
 
 module.exports = router;
