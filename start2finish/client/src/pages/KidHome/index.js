@@ -1,1 +1,1 @@
-export { default } from "./Child.js";
+export { default } from "./kid.js";
