@@ -1,3 +1,4 @@
 module.exports = {
-  adult: require("./adult")
+  profile: require("./profile"),
+  missions: require("./missions")
 };

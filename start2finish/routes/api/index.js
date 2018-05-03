@@ -1,7 +1,9 @@
 const router = require("express").Router();
-const adultRoutes = require("./adult.js");
+const profileRoutes = require("./profile.js");
+const missionsRoutes = require("./missions.js");
 
 // Routes
-router.use("/adult", adulttRoutes);
+router.use("/profile", profileRoutes);
+router.use("/missions", missionsRoutes);
 
 module.exports = router;

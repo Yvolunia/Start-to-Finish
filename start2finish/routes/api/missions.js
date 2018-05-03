@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const adultController = require("../../controllers/adultController");
+const missionsController = require("../../controllers/missionsController");
 
 router.route("/")
   .get(missionsController.findAll)

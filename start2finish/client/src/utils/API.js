@@ -1,43 +1,43 @@
 import axios from "axios";
 
 export default {
-    getkids:() => {
+    getkidsall:() => {
       return axios.get("/api/kids");
     },
     
-    getkids:(id) => {
+    getkid:(id) => {
       return axios.get("/api/kids/" + id);
     },
 
-    updatekids:(id) => {
+    updatekid:(id) => {
       return axios.put("/api/kids" + id);
     },
 
-    deletekids: (id) => {
+    deletekid: (id) => {
       return axios.delete("/api/kids/" + id);
     },
     
-    savekids: (kidData) => {
+    savekid: (kidData) => {
       return axios.post("/api/book", kidData);
     },
 
-    getmissions:() => {
+    getmissionsall:() => {
       return axios.get("/api/missions");
     },
     
-    getmissions:(id) => {
+    getmission:(id) => {
       return axios.get("/api/missions/" + id);
     },
 
-    updatemissions:(id) => {
+    updatemission:(id) => {
       return axios.put("/api/missions" + id);
     },
 
-    deletemissions: (id) => {
+    deletemission: (id) => {
       return axios.delete("/api/misions/" + id);
     },
     
-    savemissions: (missionData) => {
+    savemission: (missionData) => {
       return axios.post("/api/book", missionData);
     }
 
