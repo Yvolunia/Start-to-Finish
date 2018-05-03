@@ -83,7 +83,7 @@ class Kid extends Component {
           </Col>
           <Col size="md-6 sm-12">
             <Jumbotron>
-              <h1>Current Mission List</h1>
+              <h1>Current Kid List</h1>
             </Jumbotron>
             {this.state.missions.length ? (
               <List>
