@@ -26,7 +26,6 @@ class Mission extends Component {
     return (
       <Container fluid>
         <Row>
-          </Col>
           <Col size="md-6 sm-12">
             <Jumbotron>
               <h1>Jack's Mission List</h1>
