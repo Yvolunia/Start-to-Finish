@@ -9,52 +9,19 @@ import { Input, TextArea, FormBtn } from "../../components/Form";
 
 class Adult extends Component {
   state = {
-    kid: [],
-    userName: "",
-    reward: "",
-    missions: [],
-    missionName: "",
-    days: "",
-    pointValue: ""
+    missionName: ""
   };
 
-  componentDidMount() {
-    this.loadKid();
-    this.loadMissions();
-  }
-
-  loadKid = () => {
-    API.getkids()
-      .then(res =>
-        this.setState({ kid: res.data})
-      .catch(err => console.log(err))
-      )
-    };
-  
-
-  deleteKid = id => {
-    API.deletekids(id)
-      .then(res => this.loadKid())
-      .catch(err => console.log(err));
-  };
+  // componentDidMount() {
+  //   this.loadKid();
+  //   this.loadMissions();
+  // }
 
   handleInputChange = event => {
     const { name, value } = event.target;
     this.setState({
       [name]: value
     });
-  };
-
-  handleKidSubmit = event => {
-    event.preventDefault();
-    if (this.state.userName && this.state.reward) {
-      API.savekids({
-        userName: this.state.userName,
-        reward: this.state.reward
-      })
-        .then(res => this.loadKid())
-        .catch(err => console.log(err));
-    }
   };
 
     loadMissions = () => {
@@ -91,50 +58,15 @@ class Adult extends Component {
           <Col size="md-6">
             <Jumbotron>
               <h2>Add Missions for the Week</h2>
-              <h3>Add your child's name and reward</h3>
-              <h3>Next add the missions, number of days for each mission, and point value</h3>
-              <p>Total Points for all missions should add up to 100 points</p>
             </Jumbotron>
-            <form>
-              <Input
-                value={this.state.userName}
-                onChange={this.handleInputChange}
-                name="kid"
-                placeholder="Kid Name (required)"
-              />
-              <Input
-                value={this.state.reward}
-                onChange={this.handleInputChange}
-                name="reward"
-                placeholder="Reward (required)"
-              />
-              <FormBtn
-                disabled={!(this.state.userName && this.state.reward)}
-                onClick={this.handleKidSubmit}
-              >
-                Submit Reward
-              </FormBtn>
-            </form>
+
             <form>
             <Input
               value={this.state.missionName}
               onChange={this.handleInputChange}
-              name="mission"
+              name="missionName"
               placeholder="Mission (required)"
             />
-            <Input
-              value={this.state.days}
-              onChange={this.handleInputChange}
-              name="Days"
-              placeholder="Days (number of days (<8) to repeat activity)"
-            />
-            
-            <Input
-            value={this.state.pointValue}
-            onChange={this.handleInputChange}
-            name="pointValue"
-            placeholder="Points (number <101)"
-           />
             <FormBtn
               disabled={!(this.state.userName && this.state.reward)}
               onClick={this.handleMissionSubmit}
