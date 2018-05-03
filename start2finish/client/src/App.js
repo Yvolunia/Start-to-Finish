@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Adult from "./pages/AdultMissionSetUp";
+import Adult from "./pages/MissionSetUp";
+import Kid from "./pages/KidProfile";
 // import Login from "./pages/Login";
 // import KidHome from "./pages/KidHome";
 // import Signup from "./pages/SignUp";
@@ -15,6 +16,7 @@ const App = () => (
       {/* <Nav /> */}
       <Switch>
         <Route exact path="/" component={Adult} />
+        <Route exact path="/" component={Kid} />
         {/* <Route exact path="/SignUp" component={SignUp} /> */}
         {/* <Route exact path="/Adult" component={Adult} /> */}
         {/* <Route exact path="/Tracker" component={Tracker} />
