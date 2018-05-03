@@ -6,35 +6,21 @@ mongoose.connect(
 	process.env.MONGODB_URI || "mongodb://localhost/mission"
 );
 
-const parentSeed = [{
-	id: "Mom",
-	login: "mom12345",
-	children: [{
-		userName: "Jimmy",
-		parentReward: "4 hours of video games",
-		missions: [{
-			missionName: "Complete homework by 7:00 pm",
-			days: 5,
-			pointValue: 25
-		}, {
-			missionName: "Practice cello",
-			days: 3,
-			pointValue: 25
-		}, {
-			missionName: "Mow lawn",
-			days: 1,
-			pointValue: 25
-		}, {
-			missionName: "Make bed",
-			days: 5,
-			pointValue: 25
-		}]
-	}]
-}]
+const profileSchema = new Schema[{
+	parentName: "Mrs. Robinson",
+	kids: [
+	   {
+		   kidName: "Jack",
+		   reward: "6 hours of video games"
+	   }, {
+		kidName: "Jill",
+		reward: "Pick the family night movie"
+	  }]
+   }]
 
-db.parent
+db.profile
 	.remove({})
-	.then(() => db.parent.insertMany(parentSeed))
+	.then(() => db.adult.insertMany(adultSeed))
 	.then(data => {
 		console.log(data.insertedIds.length + " records inserted!");
 		process.exit(0);
@@ -43,3 +29,15 @@ db.parent
 		console.error(err);
 		process.exit(1);
 	});
+
+	db.profile
+		.remove({})
+		.then(() => db.adult.insertMany(adultSeed))
+		.then(data => {
+			console.log(data.insertedIds.length + " records inserted!");
+			process.exit(0);
+		})
+		.catch(err => {
+			console.error(err);
+			process.exit(1);
+		});
