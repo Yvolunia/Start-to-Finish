@@ -5,38 +5,36 @@ import API from "../../utils/API";
 import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../../components/Grid";
 import { List, ListItem } from "../../components/List";
-import { Input, TextArea, FormBtn } from "../../components/Form";
+import { Input, FormBtn } from "../../components/Form";
 
-class Mission extends Component {
-  
-  // componentDidMount() {
-  //   this.loadKid();
-  //   this.loadMissions();
-  // }
+class Kids extends Component {
+// componentDidMount() {
+//   this.loadKids();
+// }
 
-    loadMissions = () => {
-      API.getmissions()
-        .then(res =>
-          this.setState({ missions: res.data, missionName: "", days: "", pointValue: ""})
-        .catch(err => console.log(err))
-        )
-    };
-  
+loadKids = () => {
+  API.getKids()
+    .then(res =>
+      this.setState({ kids: res.data, missionName: ""})
+    .catch(err => console.log(err))
+    )
+};
+
   render() {
     return (
       <Container fluid>
         <Row>
           <Col size="md-6 sm-12">
             <Jumbotron>
-              <h1>Jack's Mission List</h1>
+              <h1>Mission List</h1>
             </Jumbotron>
-            {this.state.missions.length ? (
+            {this.state.missionName.length ? (
               <List>
-                {this.state.missions.map(missions => (
-                  <ListItem key={missions._id}>
-                    <Link to={"/adults/" + missions._id}>
+                {this.state.missionName.map(missionName => (
+                  <ListItem key={missionName._id}>
+                    <Link to={"/kids/" + missionName._id}>
                       <strong>
-                        {missions.missionName}
+                        {missionName}
                       </strong>
                     </Link>
                   </ListItem>
@@ -52,4 +50,4 @@ class Mission extends Component {
   }
 }
 
-export default Mission;
+export default Kids;

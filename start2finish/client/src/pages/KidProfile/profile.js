@@ -5,30 +5,27 @@ import API from "../../utils/API";
 import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../../components/Grid";
 import { List, ListItem } from "../../components/List";
-import { Input, TextArea, FormBtn } from "../../components/Form";
+import { Input, FormBtn } from "../../components/Form";
 
-class Kid extends Component {
+class Profiles extends Component {
   state = {
-    userName: "",
-    reward: ""
+    kidName: "",
   };
 
   componentDidMount() {
-    this.loadKid();
+    this.loadProfiles("5aedeb70832afe179eebd365");
   }
 
-  loadKid = () => {
-    API.getkids()
-      .then(res =>
-        this.setState({ kid: res.data})
-      .catch(err => console.log(err))
-      )
+  loadProfiles = id => {
+    API.getProfile(id)
+      .then(res => console.log(res.data.profiles))
+      .catch(err => console.log(err));
     };
   
 
-  deleteKid = id => {
-    API.deletekids(id)
-      .then(res => this.loadKid())
+  deleteProfile = id => {
+    API.deleteProfile(id)
+      .then(res => this.loadProfiles())
       .catch(err => console.log(err));
   };
 
@@ -39,14 +36,14 @@ class Kid extends Component {
     });
   };
 
-  handleKidSubmit = event => {
+  handleProfileSubmit = event => {
     event.preventDefault();
-    if (this.state.userName && this.state.reward) {
-      API.savekids({
-        userName: this.state.userName,
-        reward: this.state.reward
+    console.log ("was clicked");
+    {
+      API.saveProfile({
+        kidName: this.state.kidName
       })
-        .then(res => this.loadKid())
+        .then(res => this.loadProfiles())
         .catch(err => console.log(err));
     }
   };
@@ -57,23 +54,18 @@ class Kid extends Component {
         <Row>
           <Col size="md-6">
             <Jumbotron>
-              <h3>Add your child's name and reward</h3>
+              <h3>Add Your Kids</h3>
             </Jumbotron>
             <form>
               <Input
-                value={this.state.userName}
+                value={this.state.kidName}
                 onChange={this.handleInputChange}
-                name="kid"
+                name="kidName"
                 placeholder="Kid Name (required)"
               />
-              <Input
-                value={this.state.reward}
-                onChange={this.handleInputChange}
-                name="reward"
-                placeholder="Reward (required)"
-              />
+          
               <FormBtn
-                disabled={!(this.state.userName && this.state.reward)}
+                disabled={!(this.state.kidName)}
                 onClick={this.handleKidSubmit}
               >
                 Submit Profile
@@ -85,22 +77,22 @@ class Kid extends Component {
             <Jumbotron>
               <h1>Current Kid List</h1>
             </Jumbotron>
-            {this.state.missions.length ? (
+            {/* {this.state.kidName.length ? (
               <List>
-                {this.state.missions.map(missions => (
-                  <ListItem key={missions._id}>
-                    <Link to={"/adults/" + missions._id}>
+                {this.state.kidName.map(kidName => (
+                  <ListItem key={kidName._id}>
+                    <Link to={"/profiles/" + kidName._id}>
                       <strong>
-                        {missions.missionName}
+                        {kidName}
                       </strong>
                     </Link>
-                    <DeleteBtn onClick={() => this.deleteMissions(missions._id)} />
+                    <DeleteBtn onClick={() => this.deleteProfiles(kidName._id)} />
                   </ListItem>
                 ))}
               </List>
             ) : (
               <h3>No Results to Display</h3>
-            )}
+            )} */}
           </Col>
         </Row>
       </Container>
@@ -108,4 +100,4 @@ class Kid extends Component {
   }
 }
 
-export default Kid;
+export default Profiles;

@@ -1,9 +1,11 @@
 const router = require("express").Router();
-const profileRoutes = require("./profile.js");
-const missionsRoutes = require("./missions.js");
+const userRoutes = require("./user.js");
+const profileRoutes = require('./profile');
+const missionRoutes = require('./missions');
 
 // Routes
-router.use("/profile", profileRoutes);
-router.use("/missions", missionsRoutes);
+router.use("/user", userRoutes);
+router.use('/profile', profileRoutes);
+router.use('/missions', missionRoutes);
 
 module.exports = router;

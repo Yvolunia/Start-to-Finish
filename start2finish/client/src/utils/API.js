@@ -1,46 +1,47 @@
 import axios from "axios";
 
 export default {
-    getkidsall:() => {
-      return axios.get("/api/kids");
-    },
-    
-    getkid:(id) => {
-      return axios.get("/api/kids/" + id);
-    },
-
-    updatekid:(id) => {
-      return axios.put("/api/kids" + id);
-    },
-
-    deletekid: (id) => {
-      return axios.delete("/api/kids/" + id);
-    },
-    
-    savekid: (kidData) => {
-      return axios.post("/api/book", kidData);
-    },
-
-    getmissionsall:() => {
+    getMissionsall:() => {
       return axios.get("/api/missions");
     },
     
-    getmission:(id) => {
+    getMission:(id) => {
       return axios.get("/api/missions/" + id);
     },
 
-    updatemission:(id) => {
+    updateMission:(id) => {
       return axios.put("/api/missions" + id);
     },
 
-    deletemission: (id) => {
-      return axios.delete("/api/misions/" + id);
+    deleteMission: (id) => {
+      return axios.delete("/api/missions/" + id);
     },
     
-    savemission: (missionData) => {
-      return axios.post("/api/book", missionData);
+    saveMission: (missionData) => {
+      return axios.post("/api/missions", missionData);
+    },
+
+    getProfilesall:() => {
+      return axios.get("/api/profile/");
+    },
+    
+    getProfile:(id) => {
+      return axios.get("/api/profile/" + id);
+    },
+
+    updateProfile:(id) => {
+      return axios.put("/api/profile/" + id);
+    },
+
+    deleteProfile: (id) => {
+      return axios.delete("/api/profile/" + id);
+    },
+    
+    saveProfile: (missionData) => {
+      return axios.post("/api/profile", missionData);
     }
 
+    
 
 
 

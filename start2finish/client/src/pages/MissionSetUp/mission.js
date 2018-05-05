@@ -5,17 +5,31 @@ import API from "../../utils/API";
 import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../../components/Grid";
 import { List, ListItem } from "../../components/List";
-import { Input, TextArea, FormBtn } from "../../components/Form";
+import { Input, FormBtn } from "../../components/Form";
 
-class Adult extends Component {
+class Missions extends Component {
   state = {
+    reward: "",
     missionName: ""
   };
 
   // componentDidMount() {
-  //   this.loadKid();
   //   this.loadMissions();
   // }
+
+  loadMissions = () => {
+    API.getMissions()
+      .then(res =>
+        this.setState(res.data, {reward: "", missionName: ""})
+      .catch(err => console.log(err))
+      )
+  };
+
+  deleteMission = id => {
+    API.deletemission(id)
+      .then(res => this.loadMissions())
+      .catch(err => console.log(err));
+  };
 
   handleInputChange = event => {
     const { name, value } = event.target;
@@ -24,27 +38,11 @@ class Adult extends Component {
     });
   };
 
-    loadMissions = () => {
-      API.getmissions()
-        .then(res =>
-          this.setState({ missions: res.data, missionName: "", days: "", pointValue: ""})
-        .catch(err => console.log(err))
-        )
-    };
-  
-    deleteMissions = id => {
-      API.deletemissions(id)
-        .then(res => this.loadMissions())
-        .catch(err => console.log(err));
-    };
-  
     handleMissionSubmit = event => {
-      event.preventDefault();
-      if (this.state.missionName && this.state.days && this.state.pointValue) {
+      event.preventDefault(); {
         API.savemissions({
-          userName: this.state.missionName,
-          days: this.state.days,
-          pointValue: this.state.pointValue
+          reward: this.state.reward,
+          missionName: this.state.missionName
         })
           .then(res => this.loadMissions())
           .catch(err => console.log(err));
@@ -62,13 +60,19 @@ class Adult extends Component {
 
             <form>
             <Input
-              value={this.state.missionName}
+              value={this.state.reward}
+              onChange={this.handleInputChange}
+              name="reward"
+              placeholder="Reward"
+            />
+            <Input
+              value={this.state.missions}
               onChange={this.handleInputChange}
               name="missionName"
-              placeholder="Mission (required)"
+              placeholder="Mission"
             />
             <FormBtn
-              disabled={!(this.state.userName && this.state.reward)}
+              disabled={!(this.state.reward && this.state.missionName)}
               onClick={this.handleMissionSubmit}
             >
               Submit Mission
@@ -80,16 +84,16 @@ class Adult extends Component {
             <Jumbotron>
               <h1>Current Mission List</h1>
             </Jumbotron>
-            {this.state.missions.length ? (
+            {this.state.missionName.length ? (
               <List>
-                {this.state.missions.map(missions => (
-                  <ListItem key={missions._id}>
-                    <Link to={"/adults/" + missions._id}>
+                {this.state.missionName.map(missionName => (
+                  <ListItem key={missionName._id}>
+                    <Link to={"/missions/" + missionName._id}>
                       <strong>
-                        {missions.missionName}
+                        {missionName}
                       </strong>
                     </Link>
-                    <DeleteBtn onClick={() => this.deleteMissions(missions._id)} />
+                    <DeleteBtn onClick={() => this.deleteMissions(missionName._id)} />
                   </ListItem>
                 ))}
               </List>
@@ -103,4 +107,4 @@ class Adult extends Component {
   }
 }
 
-export default Adult;
+export default Missions;

@@ -3,24 +3,71 @@ const db = require("../models");
 mongoose.Promise = global.Promise;
 
 mongoose.connect(
-	process.env.MONGODB_URI || "mongodb://localhost/mission"
-);
+	process.env.MONGODB_URI || "mongodb://localhost/start_to_finish");
 
-const profileSchema = new Schema[{
-	parentName: "Mrs. Robinson",
-	kids: [
-	   {
-		   kidName: "Jack",
-		   reward: "6 hours of video games"
-	   }, {
-		kidName: "Jill",
-		reward: "Pick the family night movie"
-	  }]
-   }]
+const userSeed = [
+	{
+	adultName: "Mom",
+	password: "mom12345",
+	profiles: [{
+		kidName: "Jack",
+		reward: "5 hours video games",
+		missions: [{
+			missionName:"Complete homework by 7:00 pm",
+			completed: 0},
+			{
+			missionName:"Mow lawn",
+			completed: 0},
+			{ 
+			missionName: "Feed dogs",
+		    completed: 0}]
+	   },
+	   
+		{kidName: "Beverly",
+		reward: "5 hours video games",
+		missions: [{
+			missionName:"Complete homework by 7:00 pm",
+			completed: 0},
+			{
+			missionName:"Wash dishes",
+			completed: 0},
+			{ 
+			missionName: "Feed snake",
+		    completed: 0}]}]
+	},
+	{
+		adultName: "Dad",
+		password: "dad12345",
+		profiles: [{
+			kidName: "Bob",
+			reward: "5 hours video games",
+			missions: [{
+				missionName:"Complete homework by 7:00 pm",
+				completed: 0},
+				{
+				missionName:"Mow lawn",
+				completed: 0},
+				{ 
+				missionName: "Feed dogs",
+				completed: 0}]
+		},
+			{kidName: "Debbie",
+			reward: "5 hours video games",
+			missions: [{
+				missionName:"Complete homework by 7:00 pm",
+				completed: 0},
+				{
+				missionName:"Practice piano",
+				completed: 0},
+				{ 
+				missionName: "Feed dogs",
+				completed: 0}]}]
+		}
+];
 
-db.profile
+db.user
 	.remove({})
-	.then(() => db.adult.insertMany(adultSeed))
+	.then(() => db.user.collection.insertMany(userSeed))
 	.then(data => {
 		console.log(data.insertedIds.length + " records inserted!");
 		process.exit(0);
@@ -30,14 +77,4 @@ db.profile
 		process.exit(1);
 	});
 
-	db.profile
-		.remove({})
-		.then(() => db.adult.insertMany(adultSeed))
-		.then(data => {
-			console.log(data.insertedIds.length + " records inserted!");
-			process.exit(0);
-		})
-		.catch(err => {
-			console.error(err);
-			process.exit(1);
-		});
+ 
