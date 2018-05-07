@@ -9,16 +9,19 @@ import { Input, FormBtn } from "../../components/Form";
 
 class Profiles extends Component {
   state = {
+    profiles: [],
     kidName: "",
+    parentID: ""
   };
 
   componentDidMount() {
-    this.loadProfiles("5aedeb70832afe179eebd365");
+    this.loadProfiles("5aedeb70832afe179eebd365"); //Remove hard coded profile//
   }
 
   loadProfiles = id => {
     API.getProfile(id)
-      .then(res => console.log(res.data.profiles))
+      .then (res => {this.setState({profiles: res.data.profiles, parentID: res.data._id }, function() {console.log(this.state.profiles)})}
+    )
       .catch(err => console.log(err));
     };
   
@@ -40,10 +43,11 @@ class Profiles extends Component {
     event.preventDefault();
     console.log ("was clicked");
     {
-      API.saveProfile({
+      API.updateProfile("5aedeb70832afe179eebd365", {
+        //Remove hard code id//
         kidName: this.state.kidName
       })
-        .then(res => this.loadProfiles())
+        .then(res => this.loadProfiles("5aedeb70832afe179eebd365")) //Remove hard coded profile//
         .catch(err => console.log(err));
     }
   };
@@ -66,7 +70,7 @@ class Profiles extends Component {
           
               <FormBtn
                 disabled={!(this.state.kidName)}
-                onClick={this.handleKidSubmit}
+                onClick={this.handleProfileSubmit}
               >
                 Submit Profile
               </FormBtn>
@@ -77,22 +81,22 @@ class Profiles extends Component {
             <Jumbotron>
               <h1>Current Kid List</h1>
             </Jumbotron>
-            {/* {this.state.kidName.length ? (
+            {this.state.profiles ? (
               <List>
-                {this.state.kidName.map(kidName => (
-                  <ListItem key={kidName._id}>
-                    <Link to={"/profiles/" + kidName._id}>
+                {this.state.profiles.map(profile => (
+                  <ListItem key={profile.kidName}>
+                    <Link to={"/profiles/" + this.state.parentID}>
                       <strong>
-                        {kidName}
+                        {profile.kidName}
                       </strong>
                     </Link>
-                    <DeleteBtn onClick={() => this.deleteProfiles(kidName._id)} />
+                    {/* <DeleteBtn onClick={() => this.deleteProfiles(kidName._id)} /> */}
                   </ListItem>
                 ))}
               </List>
             ) : (
               <h3>No Results to Display</h3>
-            )} */}
+            )}
           </Col>
         </Row>
       </Container>

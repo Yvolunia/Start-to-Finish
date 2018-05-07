@@ -37,8 +37,8 @@ export default {
       return axios.delete("/api/profile/" + id);
     },
     
-    saveProfile: (missionData) => {
-      return axios.post("/api/profile", missionData);
+    saveProfile: (id) => {
+      return axios.post("/api/profile", id);
     }
 
     
