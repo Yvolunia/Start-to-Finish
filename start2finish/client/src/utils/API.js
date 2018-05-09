@@ -29,8 +29,8 @@ export default {
       return axios.get("/api/profile/" + id);
     },
 
-    updateProfile:(id) => {
-      return axios.put("/api/profile/" + id);
+    updateProfile:(id,data) => {
+      return axios.put("/api/profile/" + id, data);
     },
 
     deleteProfile: (id) => {

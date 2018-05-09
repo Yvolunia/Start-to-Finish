@@ -27,6 +27,17 @@ module.exports = {
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
+  addProfile: function(req, res) {
+    console.log( "Controller", req.body );
+    db.user
+      .findOneAndUpdate({ _id: req.params.id }, {
+        $push: {
+          profiles: req.body
+        }
+      })
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+  },
   remove: function(req, res) {
     db.user
       .findById({ _id: req.params.id })

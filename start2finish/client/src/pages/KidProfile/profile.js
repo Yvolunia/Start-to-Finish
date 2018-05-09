@@ -15,13 +15,14 @@ class Profiles extends Component {
   };
 
   componentDidMount() {
-    this.loadProfiles("5aedeb70832afe179eebd365"); //Remove hard coded profile//
+    this.loadProfiles("5aedeb70832afe179eebd366"); //Remove hard coded profile//
   }
 
   loadProfiles = id => {
     API.getProfile(id)
-      .then (res => {this.setState({profiles: res.data.profiles, parentID: res.data._id }, function() {console.log(this.state.profiles)})}
-    )
+      .then(res => {
+        this.setState({profiles: res.data.profiles, parentID: res.data._id });
+      })
       .catch(err => console.log(err));
     };
   
@@ -43,11 +44,11 @@ class Profiles extends Component {
     event.preventDefault();
     console.log ("was clicked");
     {
-      API.updateProfile("5aedeb70832afe179eebd365", {
+      API.updateProfile("5aedeb70832afe179eebd366", {
         //Remove hard code id//
         kidName: this.state.kidName
       })
-        .then(res => this.loadProfiles("5aedeb70832afe179eebd365")) //Remove hard coded profile//
+        .then(res => this.loadProfiles("5aedeb70832afe179eebd366")) //Remove hard coded profile//
         .catch(err => console.log(err));
     }
   };
@@ -81,7 +82,8 @@ class Profiles extends Component {
             <Jumbotron>
               <h1>Current Kid List</h1>
             </Jumbotron>
-            {this.state.profiles ? (
+            {console.log( this.state.profiles )}
+            {this.state.profiles.length ? (
               <List>
                 {this.state.profiles.map(profile => (
                   <ListItem key={profile.kidName}>
