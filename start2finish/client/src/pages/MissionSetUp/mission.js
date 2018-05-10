@@ -17,17 +17,23 @@ class Missions extends Component {
 
   componentDidMount() {
     API.getProfile(this.props.match.params.id)
-      .then(res => this.setState({ profile: res.data }))
+      .then(res => this.setState({ profiles: res.data }))
       .catch(err => console.log(err));
   }
 
-  loadMissions = () => {
-    API.getMissions()
-      .then(res =>
-        this.setState(res.data, {reward: "", missionName: ""})
-      .catch(err => console.log(err))
-      )
-  };
+ loadMission = id => {
+    API.getMissions(id)
+      .then(res => {
+        this.setState(res.data, {missionName: ""})
+      })
+      .catch(err => console.log(err));
+  }; 
+
+  // deleteMission = id => {
+  //   API.deleteMission(id)
+  //     .then(res => this.loadMissions())
+  //     .catch(err => console.log(err));
+  // };
 
   handleInputChange = event => {
     const { name, value } = event.target;
@@ -42,9 +48,9 @@ class Missions extends Component {
     {
       API.updateMission("5aedeb70832afe179eebd366", {
         //Remove hard code id//
-        mission: this.state.mission,
+        mission: this.state.missionName
       })
-        .then(res => this.loadProfiles("5aedeb70832afe179eebd366")) //Remove hard coded profile//
+        .then(res => this.loadMissions("5aedeb70832afe179eebd366")) //Remove hard coded profile//
         .catch(err => console.log(err));
     }
   };
@@ -64,13 +70,13 @@ class Missions extends Component {
 
             <form>
             <Input
-              value={this.state.missions}
+              value={this.state.missionName}
               onChange={this.handleInputChange}
               name="missionName"
               placeholder="Mission"
             />
             <FormBtn
-              disabled={!(this.state.reward && this.state.missionName)}
+              disabled={!(this.state.missionName)}
               onClick={this.handleMissionSubmit}
             >
               Submit Mission
@@ -82,22 +88,21 @@ class Missions extends Component {
             <Jumbotron>
               <h2>Current Mission List</h2>
             </Jumbotron>
-            {this.state.missionName.length ? (
+            {console.log( this.state.missions)}
+            {this.state.missions.length ? (
               <List>
-                {this.state.missionName.map(missionName => (
-                  <ListItem key={missionName._id}>
-                    <Link to={"/missions/" + missionName._id}>
-                      <strong>
-                        {missionName}
-                      </strong>
-                    </Link>
-                    <DeleteBtn onClick={() => this.deleteMissions(missionName._id)} />
+                {this.state.missions.map(mission => (
+                  <ListItem key={kidName.missionName}>
+                    {/* <DeleteBtn onClick={() => this.deleteMissions(missionName._id)} /> */}
                   </ListItem>
                 ))}
               </List>
             ) : (
               <h3>No Results to Display</h3>
             )}
+          <Col size="md-4">
+            <Link to="/profile">← Back to Kids</Link>
+          </Col>
           </Col>
         </Row>
       </Container>
