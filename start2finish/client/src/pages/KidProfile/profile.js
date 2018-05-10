@@ -11,7 +11,8 @@ class Profiles extends Component {
   state = {
     profiles: [],
     kidName: "",
-    parentID: ""
+    parentID: "",
+    reward: ""
   };
 
   componentDidMount() {
@@ -59,7 +60,7 @@ class Profiles extends Component {
         <Row>
           <Col size="md-6">
             <Jumbotron>
-              <h3>Add Your Kids</h3>
+              <h3>Add Your Kid Profile and Reward</h3>
             </Jumbotron>
             <form>
               <Input
@@ -68,9 +69,16 @@ class Profiles extends Component {
                 name="kidName"
                 placeholder="Kid Name (required)"
               />
+
+               <Input
+                value={this.state.reward}
+                onChange={this.handleInputChange}
+                name="reward"
+                placeholder="Reward (required)"
+              />
           
               <FormBtn
-                disabled={!(this.state.kidName)}
+                disabled={!(this.state.kidName && this.state.reward)}
                 onClick={this.handleProfileSubmit}
               >
                 Submit Profile
@@ -80,7 +88,7 @@ class Profiles extends Component {
           </Col>
           <Col size="md-6 sm-12">
             <Jumbotron>
-              <h1>Current Kid List</h1>
+              <h3>Current Kid List</h3>
             </Jumbotron>
             {console.log( this.state.profiles )}
             {this.state.profiles.length ? (
@@ -89,7 +97,7 @@ class Profiles extends Component {
                   <ListItem key={profile.kidName}>
                     <Link to={"/profiles/" + this.state.parentID}>
                       <strong>
-                        {profile.kidName}
+                        {profile.kidName} gets {profile.reward}
                       </strong>
                     </Link>
                     {/* <DeleteBtn onClick={() => this.deleteProfiles(kidName._id)} /> */}
