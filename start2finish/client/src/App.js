@@ -15,8 +15,9 @@ const App = () => (
     <div>
       {/* <Nav /> */}
       <Switch>
-        <Route exact path="/" component={Missions} />
+        <Route exact path="/" component={Profiles} />
         <Route exact path="/profile" component={Profiles} />
+        <Route exact path="/missions/:id" component={Missions} />
         <Route exact path="/kid" component={Kids} />
         {/* <Route exact path="/SignUp" component={SignUp} /> */}
         <Route exact path="/missions" component={Missions} />

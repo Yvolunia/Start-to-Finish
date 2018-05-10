@@ -9,13 +9,17 @@ import { Input, FormBtn } from "../../components/Form";
 
 class Missions extends Component {
   state = {
-    reward: "",
+    missions: [],
+    parentID: "",
+    kidName: "",
     missionName: ""
   };
 
-  // componentDidMount() {
-  //   this.loadMissions();
-  // }
+  componentDidMount() {
+    API.getProfile(this.props.match.params.id)
+      .then(res => this.setState({ profile: res.data }))
+      .catch(err => console.log(err));
+  }
 
   loadMissions = () => {
     API.getMissions()
@@ -25,12 +29,6 @@ class Missions extends Component {
       )
   };
 
-  deleteMission = id => {
-    API.deletemission(id)
-      .then(res => this.loadMissions())
-      .catch(err => console.log(err));
-  };
-
   handleInputChange = event => {
     const { name, value } = event.target;
     this.setState({
@@ -38,33 +36,33 @@ class Missions extends Component {
     });
   };
 
-    handleMissionSubmit = event => {
-      event.preventDefault(); {
-        API.savemissions({
-          reward: this.state.reward,
-          missionName: this.state.missionName
-        })
-          .then(res => this.loadMissions())
-          .catch(err => console.log(err));
-      }
-    };
+  handleMissionSubmit = event => {
+    event.preventDefault();
+    console.log ("was clicked");
+    {
+      API.updateMission("5aedeb70832afe179eebd366", {
+        //Remove hard code id//
+        mission: this.state.mission,
+      })
+        .then(res => this.loadProfiles("5aedeb70832afe179eebd366")) //Remove hard coded profile//
+        .catch(err => console.log(err));
+    }
+  };
+ 
 
   render() {
+    const { state: kidProfile } = this.props.location;
+    const { kidName, missions } = kidProfile;
+
     return (
       <Container fluid>
         <Row>
           <Col size="md-6">
             <Jumbotron>
-              <h2>Add Missions for the Week</h2>
+              <h2>{kidName}'s Missions</h2>
             </Jumbotron>
 
             <form>
-            <Input
-              value={this.state.reward}
-              onChange={this.handleInputChange}
-              name="reward"
-              placeholder="Reward"
-            />
             <Input
               value={this.state.missions}
               onChange={this.handleInputChange}
@@ -82,7 +80,7 @@ class Missions extends Component {
           </Col>
           <Col size="md-6 sm-12">
             <Jumbotron>
-              <h1>Current Mission List</h1>
+              <h2>Current Mission List</h2>
             </Jumbotron>
             {this.state.missionName.length ? (
               <List>

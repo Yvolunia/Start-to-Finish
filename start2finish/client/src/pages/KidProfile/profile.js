@@ -96,7 +96,10 @@ class Profiles extends Component {
               <List>
                 {this.state.profiles.map(profile => (
                   <ListItem key={profile.kidName}>
-                    <Link to={"/profiles/" + this.state.parentID}>
+                    <Link to={{
+                      pathname: "/missions/" + this.state.parentID,
+                      state: profile
+                    }}>
                       <strong>
                         {profile.kidName} gets {profile.reward}
                       </strong>
