@@ -47,7 +47,8 @@ class Profiles extends Component {
     {
       API.updateProfile("5aedeb70832afe179eebd366", {
         //Remove hard code id//
-        kidName: this.state.kidName
+        kidName: this.state.kidName,
+        reward: this.state.reward
       })
         .then(res => this.loadProfiles("5aedeb70832afe179eebd366")) //Remove hard coded profile//
         .catch(err => console.log(err));
