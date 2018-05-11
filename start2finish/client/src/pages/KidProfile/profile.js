@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import DeleteBtn from "../../components/DeleteBtn";
 import Jumbotron from "../../components/Jumbotron";
+import Button from "../../components/Button";
 import API from "../../utils/API";
 import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../../components/Grid";
@@ -16,7 +17,7 @@ class Profiles extends Component {
   };
 
   componentDidMount() {
-    this.loadProfiles("5aedeb70832afe179eebd366"); //Remove hard coded profile//
+    this.loadProfiles("5af4d0e91b19422218cf06c5"); //Remove hard coded profile//
   }
 
   loadProfiles = id => {
@@ -45,12 +46,12 @@ class Profiles extends Component {
     event.preventDefault();
     console.log ("was clicked");
     {
-      API.updateProfile("5aedeb70832afe179eebd366", {
+      API.updateProfile("5af4d0e91b19422218cf06c5", {
         //Remove hard code id//
         kidName: this.state.kidName,
         reward: this.state.reward
       })
-        .then(res => this.loadProfiles("5aedeb70832afe179eebd366")) //Remove hard coded profile//
+        .then(res => this.loadProfiles("5af4d0e91b19422218cf06c5")) //Remove hard coded profile//
         .catch(err => console.log(err));
     }
   };
@@ -105,6 +106,12 @@ class Profiles extends Component {
                       </strong>
                     </Link>
                     {/* <DeleteBtn onClick={() => this.deleteProfiles(kidName._id)} /> */}
+                    <Button>
+                      <Link to={{ 
+                        pathname:"/kid/" + this.state.parentID, 
+                        state: profile
+                      }}>{profile.kidName}'s Missions </Link>
+                    </Button>
                   </ListItem>
                 ))}
               </List>
