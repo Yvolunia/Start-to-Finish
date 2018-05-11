@@ -6,7 +6,7 @@ import Profiles from "./pages/KidProfile";
 import Kids from "./pages/KidHome";
 // import Signup from "./pages/SignUp";
 // import Tracker from "./pages/AdultTracker";
-// import Home from "./pages/HomeScreen";
+ import Home from "./pages/HomeScreen";
 // import Nav from "./components/Nav";
 
 
@@ -15,7 +15,7 @@ const App = () => (
     <div>
       {/* <Nav /> */}
       <Switch>
-        <Route exact path="/" component={Profiles} />
+        <Route exact path="/" component={Home} />
         <Route exact path="/profile" component={Profiles} />
         <Route exact path="/missions/:id" component={Missions} />
         <Route exact path="/kid" component={Kids} />
